@@ -14,10 +14,10 @@ const ProfileCard = () => {
             <Button>View Profile</Button>
             <div className='flex flex-col gap-1'>
                 <h1 className='text-md font-bold'>Manage</h1>
-                <div className='p-1 text-start text-neutral-400 bg-red-400 rounded-[5px] cursor-pointer'>
+                <div className='p-1 text-start text-neutral-400 rounded-[5px] cursor-pointer'>
                     Account
                 </div>
-                <div className='p-1 text-start text-neutral-400 bg-red-400 rounded-[5px] cursor-pointer'>
+                <div className='p-1 text-start text-neutral-400 rounded-[5px] cursor-pointer'>
                     SignOut
                 </div>
             </div>

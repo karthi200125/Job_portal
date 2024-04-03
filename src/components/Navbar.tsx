@@ -18,11 +18,10 @@ const Navbar = () => {
     { href: '/message', title: 'messages', icon: <BsSuitcaseLgFill className='text-[20px]' /> },
   ];
 
-  const pathname = usePathname()
-  console.log(pathname)
+  const pathname = usePathname()  
 
   return (
-    <div className="h-[60px] w-full container mx-auto fixed top-0 flex items-center gap-2 border-b-[2px] border-solid border-neutral-300 justify-between">
+    <div className="h-[60px] w-full z-10 bg-white container mx-auto fixed top-0 flex items-center gap-2 border-b-[2px] border-solid border-neutral-300 justify-between">
       <div className="flex flex-row gap-2 items-center">
         <Logo />
         <SearchBox name="" placeholder="Title, Skill or company" icon={<CiSearch />} />

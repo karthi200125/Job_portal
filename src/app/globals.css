@@ -13,3 +13,7 @@ body {}
 body::-webkit-scrollbar {
     display: none;
 }
+
+.custominput:focus .inputspan {
+    color: red;
+}
