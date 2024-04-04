@@ -8,7 +8,32 @@
     box-sizing: border-box;
 }
 
-body {}
+:root {
+    --bold: black;
+    --light: #c9bfbf;
+}
+
+
+body {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.modelcon {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbarcon {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+
+option {
+    background-color: white;
+    color: black;    
+}
 
 body::-webkit-scrollbar {
     display: none;
@@ -16,4 +41,13 @@ body::-webkit-scrollbar {
 
 .custominput:focus .inputspan {
     color: red;
+}
+
+._border {
+    border: 1px solid #cccccca8;
+    border-radius: 10px;
+}
+
+._borderb {
+    border-bottom: 1px solid #cccccca8;
 }

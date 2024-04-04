@@ -11,22 +11,30 @@ import User from './User';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-const Navbar = () => {
+interface NavbarProps {
+  onchange?: any
+}
+
+const Navbar = ({ onchange }: NavbarProps) => {
   const navlinks: any = [
     { href: '/', title: 'Jobs', icon: <BsSuitcaseLgFill className='text-[20px]' /> },
     { href: '/notifications', title: 'Notifications', icon: <IoMdNotifications className='text-[25px]' /> },
     { href: '/message', title: 'messages', icon: <BsSuitcaseLgFill className='text-[20px]' /> },
   ];
 
-  const pathname = usePathname()  
+  const pathname = usePathname()
+
+  const handleChnage = (e: any) => {
+    onchange(e)
+  }
 
   return (
-    <div className="h-[60px] w-full z-10 bg-white container mx-auto fixed top-0 flex items-center gap-2 border-b-[2px] border-solid border-neutral-300 justify-between">
+    <div className="navbarcon h-[60px] w-full z-10 bg-white container mx-auto flex items-center gap-2 border-b-[2px] border-solid border-neutral-300 justify-between">
       <div className="flex flex-row gap-2 items-center">
         <Logo />
-        <SearchBox name="" placeholder="Title, Skill or company" icon={<CiSearch />} />
+        <SearchBox onchange={handleChnage} name="" placeholder="Title, Skill or company" icon={<CiSearch />} />
         <SearchBox name="" placeholder="city state or zipcode" icon={<MdLocationOn />} />
-        <Button>search</Button>
+        <Button variant='custom_blue'>search</Button>
       </div>
       <div className="flex flex-row items-center h-full ">
         {navlinks?.map((nav: any, index: number) => (

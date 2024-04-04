@@ -14,7 +14,7 @@ const HiringPerson = () => {
                         <p className='text-[12px] text-neutral-400'>job poster</p>
                     </div>
                 </div>
-                <Button>Message</Button>                
+                <Button variant='custom_border' className='px-6'>Message</Button>                
             </div>
         </div>
     )
