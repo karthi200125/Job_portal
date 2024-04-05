@@ -10,7 +10,7 @@
 
 :root {
     --bold: black;
-    --light: #c9bfbf;
+    --light: #c9bfbf;    
 }
 
 
@@ -32,7 +32,7 @@ body {
 
 option {
     background-color: white;
-    color: black;    
+    color: black;
 }
 
 body::-webkit-scrollbar {
@@ -50,4 +50,21 @@ body::-webkit-scrollbar {
 
 ._borderb {
     border-bottom: 1px solid #cccccca8;
+}
+
+.skeleton {
+    /* background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); */
+    background: linear-gradient(90deg, #f0f0f0 25%, #cfcdcd 50%, #f0f0f0 75%);
+    background-size: 400% 100%;
+    animation: shine 4s infinite linear;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }

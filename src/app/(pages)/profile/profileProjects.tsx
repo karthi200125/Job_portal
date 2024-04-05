@@ -7,7 +7,7 @@ import Model from '@/components/Model/Model';
 import Input from '@/components/Input';
 import { Button } from '@/components/ui/button';
 
-const ProfileProjects = () => {
+const ProfileProjects = ({ user }: any) => {
 
     const projects = [
         { id: 1, proTitle: 'one', proDesc: 'descrioption', proimage: '', proLink: '' },
@@ -47,14 +47,14 @@ const ProfileProjects = () => {
                 </div>
             </div>
             <div className='flex flex-col gap-2'>
-                {projects?.map((pro) => (
-                    <Link href={pro?.proLink} key={pro?.id} className='flex flex-row gap-10 items-start _borderb py-2 relative'>
+                {user?.projects?.map((pro: any, index: number) => (
+                    <Link href={pro?.proLink} key={index} className='flex flex-row gap-10 items-start _borderb py-2 relative'>
                         <div className='absolute top-2 right-1 w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'>
-                            <MdEdit className='text-[20px]'  />
+                            <MdEdit className='text-[20px]' />
                         </div>
-                        <img src="" alt="" className='w-[100px] h-[100px] object-cover obeject-cover' />
+                        <img src={pro?.proImage} alt="" className='w-[100px] h-[100px] object-cover obeject-cover' />
                         <div className='capitalize'>
-                            <h1 className='text-md font-bold'>{pro?.proTitle}</h1>
+                            <h1 className='text-md font-bold'>{pro?.proName}</h1>
                             <h3 className='text-[12px] text-[var(--light)]'>{pro?.proDesc}</h3>
                         </div>
 

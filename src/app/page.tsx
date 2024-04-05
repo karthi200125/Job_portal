@@ -8,6 +8,7 @@ import { JobData } from '@/Dummydata';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectJob, setselectJob] = useState('');
   const [filters, setFilters] = useState({
     DatePosted: '',
     Exp: '',
@@ -50,7 +51,7 @@ export default function Home() {
     return result;
   }, [searchQuery, filters]);
 
-  console.log(filteredJobs)
+  const job = filteredJobs.find(job => job.id === Number(selectJob));
 
   return (
     <>
@@ -58,8 +59,8 @@ export default function Home() {
       <section className="container mx-auto w-full h-[100vh] pt-[80px] bg-white flex flex-col gap-2">
         <Filters updateFilters={updateFilters} />
         <div className="flex flex-row justify-between gap-1">
-          <LeftJobs jobs={filteredJobs} />
-          <RightJobs jobs={filteredJobs} />
+          <LeftJobs jobs={filteredJobs} onJob={(d: any) => setselectJob(d)} />
+          <RightJobs job={job ? job : filteredJobs[0]} />
         </div>
       </section>
     </>

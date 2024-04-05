@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 
-const ProfileEducation = () => {
+const ProfileEducation = ({ user }: any) => {
     const [editModelOpen, setEditModelOpen] = useState(false);
 
     const EditEducationBody = (
@@ -31,22 +31,16 @@ const ProfileEducation = () => {
             </div>
 
             <div className='flex flex-col gap-2'>
-                <div className='flex flex-row gap-2 items-start'>
-                    <img src="" alt="" className='w-[80px] h-[80px] object-cover ' />
-                    <div className='flex flex-col gap-1 capitalize'>
-                        <h2 className='text-md font-semibold'>avs college of technology</h2>
-                        <h3 className='text-sm'>degree in department</h3>
-                        <p className='text-sm text-[var(--light)]'>aug 2018 - aug-2000</p>
+                {user?.education?.map((edu: any, index: number) => (
+                    <div className='flex flex-row gap-2 items-start' key={index}>
+                        <img src="" alt="" className='w-[80px] h-[80px] object-cover ' />
+                        <div className='flex flex-col gap-1 capitalize'>
+                            <h2 className='text-md font-semibold'>{edu?.orgName}</h2>
+                            <h3 className='text-sm'>{edu?.degree}</h3>
+                            <p className='text-sm text-[var(--light)]'>{edu?.start} - {edu?.end}</p>
+                        </div>
                     </div>
-                </div>
-                <div className='flex flex-row gap-2 items-start'>
-                    <img src="" alt="" className='w-[80px] h-[80px] object-cover ' />
-                    <div className='flex flex-col gap-1 capitalize'>
-                        <h2 className='text-md font-semibold'>avs college of technology</h2>
-                        <h3 className='text-sm'>degree in department</h3>
-                        <p className='text-sm text-[var(--light)]'>aug 2018 - aug-2000</p>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )

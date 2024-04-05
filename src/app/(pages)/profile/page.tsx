@@ -12,6 +12,7 @@ import ProfileProjects from "./profileProjects";
 import Model from "@/components/Model/Model";
 import { useState } from "react";
 import Input from "@/components/Input";
+import { user } from '@/UserDate'
 
 const Profile = () => {
 
@@ -52,31 +53,31 @@ const Profile = () => {
             <div className="w-[70%] flex flex-col gap-3">
                 <div className="border-[1px] border-solid border-neutral-200 bg-white rounded-xl pb-3">
                     <div className=" h-[250px] relative">
-                        <img src="https://images.pexels.com/photos/14288495/pexels-photo-14288495.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" className="w-full h-full absolute top-0 left-0 " />
-                        <img src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" className="bg-red-400 absolute bottom-[-50px] left-10 w-[150px] h-[150px] object-cover rounded-full" />
+                        <img src={user?.bannerPic} alt="banner pic" className="w-full h-full absolute top-0 left-0 " />
+                        <img src={user?.profilePic} alt={user?.username} className="absolute bottom-[-50px] left-10 w-[150px] h-[150px] object-cover rounded-full" />
                     </div>
                     {/* user details */}
                     <div className="pt-[70px] flex flex-col gap-2 px-5 bg-white">
                         <div className='flex flex-row items-center justify-between py-3'>
-                            <h1 className='text-lg font-bold'>karthikeyan</h1>
+                            <h1 className='text-lg font-bold'>{user?.username}</h1>
                             <div className='w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'>
                                 <MdEdit className='text-[25px]' onClick={() => setEdituserOpen(true)} />
                             </div>
                         </div>
                         {/* <h1 className="text-2xl font-bold capitalize">Karthikeya</h1> */}
-                        <h2 className="text-sm w-[50%] capitalize">react | redux | vitejs</h2>
+                        <h2 className="text-sm w-[50%] capitalize">{user?.jobRole}</h2>
                         <div className="text-sm tex-neutral-400 flex flex-row items-center gap-1 capitalize text-neutral-400">
-                            <span>city</span>,
-                            <span>state</span>,
-                            <span>country</span>.
+                            <span>{user?.city}</span>,
+                            <span>{user?.state}</span>,
+                            <span>{user?.country}</span>.
                         </div>
                         <Link href={''} className="flex flex-row gap-2 items-center text-blue-500 font-bold">
-                            <span>portfolio</span>
+                            <span>{user?.socialLink}</span>
                             <LiaExternalLinkAltSolid />
                         </Link>
                         <div className="flex flex-row gap-2">
-                            <h5>100 followers</h5>
-                            <h5>100 following</h5>
+                            <h5>{user?.followers?.length} followers</h5>
+                            <h5>{user?.following?.length} following</h5>
                         </div>
                         <div className="flex flex-row gap-2">
                             <Button variant='custom_blue' className={`w-[100px]`}>{Followed ? "Following" : "Follow"}</Button>
@@ -85,10 +86,10 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <ProfileViews />
-                <ProfileEducation />
-                <ProfileSkills />
-                <ProfileProjects />
+                <ProfileViews user={user} />
+                <ProfileEducation user={user} />
+                <ProfileSkills user={user} />
+                <ProfileProjects user={user} />
             </div>
 
             <ProfileRight />
