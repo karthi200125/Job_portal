@@ -8,6 +8,7 @@ import { Button } from './ui/button';
 import { IoIosMore } from "react-icons/io";
 import Link from 'next/link';
 import Icon from './Icon';
+import { Tooltip } from '@/app/(pages)/premium/Tooltip';
 
 interface RightobsProps {
     job?: any
@@ -23,12 +24,12 @@ const RightJobs = ({ job }: RightobsProps) => {
         <div className='h-full w-full overflow-y-auto capitalize p-5 relative'>
             {!job ?
                 <div>
-                    no Job                    
+                    no Job
                 </div>
                 :
                 <>
                     <div className='flex items-center justify-center hover:bg-neutral-100 cursor-pointer absolute right-5 top-5 rounded-full w-[40px] h-[40px]'>
-                        <Icon icon={<IoIosMore size={30} />} />
+                        <Icon icon={<IoIosMore size={30} />} text='More' dir='top' />
                     </div>
                     <h1 className='text-2xl font-bold'>{job?.jobTitle}</h1>
                     <div className='text-sm'>
@@ -66,15 +67,21 @@ const RightJobs = ({ job }: RightobsProps) => {
                     {/* buttons */}
                     <div className='mt-5 mb-5 flex flex-row gap-5'>
                         {applyUrl ?
-                            <Button asChild variant='custom_blue' className='px-6'>
-                                <div >
-                                    {applied ? "Applied" : "apply"}
-                                </div>
-                            </Button>
+                            <Tooltip text='apply that job' direction='top'>
+                                <Button asChild variant='custom_blue' className='px-6'>
+                                    <div >
+                                        {applied ? "Applied" : "apply"}
+                                    </div>
+                                </Button>
+                            </Tooltip>
                             :
-                            <Button variant='custom_blue' className={`px-6 ${applied ? "bg-green-400 text-white cursor-not-allowed " : ""}`}>{applied ? "Applied" : "Easy Apply"}</Button>
+                            <Tooltip text='apply that Job' direction='top'>
+                                <Button variant='custom_blue' className={`px-6 ${applied ? "bg-green-400 text-white cursor-not-allowed " : ""}`}>{applied ? "Applied" : "Easy Apply"}</Button>
+                            </Tooltip>
                         }
-                        <Button variant='custom_border' className={`px-6 ${saved ? "bg-blue-500 text-white" : ""}`}>{saved ? "Saved" : "Save"}</Button>
+                        <Tooltip text='save that job' direction='top'>
+                            <Button variant='custom_border' className={`px-6 ${saved ? "bg-blue-500 text-white" : ""}`}>{saved ? "Saved" : "Save"}</Button>
+                        </Tooltip>
                     </div>
 
                     {/* hiring person */}

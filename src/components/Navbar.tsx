@@ -9,6 +9,7 @@ import Logo from './Logo';
 import SearchBox from './SearchBox';
 import User from './User';
 import { Button } from './ui/button';
+import { Tooltip } from '@/app/(pages)/premium/Tooltip';
 
 interface NavbarProps {
   onchange?: any
@@ -16,9 +17,9 @@ interface NavbarProps {
 
 const Navbar = ({ onchange }: NavbarProps) => {
   const navlinks: any = [
-    { count: 10, href: '/', title: 'Jobs', icon: <BsSuitcaseLgFill className='text-[20px]' /> },
-    { count: '', href: '/notification', title: 'Notifications', icon: <IoMdNotifications className='text-[25px]' /> },
-    { count: 28, href: '/message', title: 'messages', icon: <BsSuitcaseLgFill className='text-[20px]' /> },
+    { count: 10, href: '/', title: 'Jobs', icon: <BsSuitcaseLgFill className='text-[20px]' />, text: "jobs", dir: "left" },
+    { count: '', href: '/notification', title: 'Notifications', icon: <IoMdNotifications className='text-[25px]' />, text: "Notofications", dir: "left" },
+    { count: 28, href: '/message', title: 'messages', icon: <BsSuitcaseLgFill className='text-[20px]' />, text: "Messages", dir: "left" },
   ];
 
   const pathname = usePathname()
@@ -41,7 +42,9 @@ const Navbar = ({ onchange }: NavbarProps) => {
         {navlinks?.map((nav: any, index: number) => (
           <Link href={nav.href} className={`${pathname === nav.href && 'border-black opacity-[1] '} w-[80px] h-full flex flex-col items-center justify-center opacity-[0.7] hover:opacity-[1] cursor-pointer border-b-[2px] border-solid `} key={index} >
             <div className='relative'>
-              {nav.icon}
+              <Tooltip text={nav?.text} direction={nav?.dir}>
+                {nav.icon}
+              </Tooltip>
               {nav?.count > 0 &&
                 <span className='absolute w-[18px] h-[18px] rounded-full bg-red-500 text-white text-[8px] flex items-center justify-center top-[-8px] font-bold right-[-8px]'>{nav?.count}</span>
               }
@@ -51,7 +54,9 @@ const Navbar = ({ onchange }: NavbarProps) => {
         ))}
         <User />
         <span className='m-2 font-bold'>|</span>
-        <Link href={'/premium'} className='text-yellow-400 m-2 underline text-sm cursor-pointer'>Premium</Link>
+        <Tooltip text='get a premium' direction='left'>
+          <Link href={'/premium'} className='text-yellow-400 m-2 underline text-sm cursor-pointer'>Premium</Link>
+        </Tooltip>
       </div>
     </div>
   );

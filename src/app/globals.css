@@ -10,7 +10,10 @@
 
 :root {
     --bold: black;
-    --light: #c9bfbf;    
+    --light: #c9bfbf;
+    --primary_dark: #3e2043;
+    --primary: #78317e;
+    --primary-light: #9a60a0;    
 }
 
 

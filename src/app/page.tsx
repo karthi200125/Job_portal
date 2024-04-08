@@ -1,10 +1,11 @@
 'use client'
-import React, { useState, useMemo } from 'react';
+import { JobData } from '@/Dummydata';
 import Filters from "@/components/Filters";
 import LeftJobs from "@/components/LeftJobs";
 import Navbar from "@/components/Navbar";
 import RightJobs from "@/components/RightJobs";
-import { JobData } from '@/Dummydata';
+import axios from 'axios';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,6 +53,19 @@ export default function Home() {
   }, [searchQuery, filters]);
 
   const job = filteredJobs.find(job => job.id === Number(selectJob));
+
+  useEffect(() => {
+    const Getusers = async () => {
+      try {
+        const res = await axios.get('http://localhost:3000/api/users')
+        // console.log(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    Getusers()
+  }, [])
+
 
   return (
     <>

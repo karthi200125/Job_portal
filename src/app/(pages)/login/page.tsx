@@ -1,10 +1,24 @@
 import Input from '@/components/Input'
 import Logo from '@/components/Logo'
 import { Button } from '@/components/ui/button'
+import axios from 'axios'
 import Link from 'next/link'
 import React from 'react'
 
 const Login = () => {
+
+
+    const handleLogin = async () => {
+        try {
+            const email = "one@gmail.com"
+            const password = "one123"
+            const res = await axios.post('http://localhost:3000/api/login', { email, password })
+            console.log(res.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div className='container mx-auto flex flex-col gap-2 w-full h-screen'>
             <div className='w-full flex flex-row items-center justify-between h-[80px] border-b-[1px] border-solid border-neutral-200'>

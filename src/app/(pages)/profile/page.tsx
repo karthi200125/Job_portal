@@ -13,6 +13,8 @@ import Model from "@/components/Model/Model";
 import { useState } from "react";
 import Input from "@/components/Input";
 import { user } from '@/UserDate'
+import Img from "@/components/Img";
+import Icon from "@/components/Icon";
 
 const Profile = () => {
 
@@ -53,16 +55,16 @@ const Profile = () => {
             <div className="w-[70%] flex flex-col gap-3">
                 <div className="border-[1px] border-solid border-neutral-200 bg-white rounded-xl pb-3">
                     <div className=" h-[250px] relative">
-                        <img src={user?.bannerPic} alt="banner pic" className="w-full h-full absolute top-0 left-0 " />
-                        <img src={user?.profilePic} alt={user?.username} className="absolute bottom-[-50px] left-10 w-[150px] h-[150px] object-cover rounded-full" />
+                        <Img src={user?.bannerPic} cls="w-full h-full absolute top-0 left-0" />
+                        <div className="rounded-full w-[150px] h-[150px] absolute bottom-[-50px] left-10 p-1 bg-white">
+                            <Img src={user?.profilePic} cls="object-cover w-full h-full rounded-full" />
+                        </div>
                     </div>
                     {/* user details */}
                     <div className="pt-[70px] flex flex-col gap-2 px-5 bg-white">
                         <div className='flex flex-row items-center justify-between py-3'>
-                            <h1 className='text-lg font-bold'>{user?.username}</h1>
-                            <div className='w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'>
-                                <MdEdit className='text-[25px]' onClick={() => setEdituserOpen(true)} />
-                            </div>
+                            <h1 className='text-3xl font-bold'>{user?.username}</h1>
+                            <Icon icon={<MdEdit className='text-[25px]' />} onClick={() => setEdituserOpen(true)} text="edit user info" dir="top"/>
                         </div>
                         {/* <h1 className="text-2xl font-bold capitalize">Karthikeya</h1> */}
                         <h2 className="text-sm w-[50%] capitalize">{user?.jobRole}</h2>

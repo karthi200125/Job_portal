@@ -158,8 +158,8 @@ export const user = {
     country: 'India',
     state: 'Tamil Nadu',
     city: 'Chennai',
-    profilePic: 'path/to/profilePic.jpg',
-    bannerPic: 'path/to/bannerPic.jpg',
+    profilePic: 'https://media.licdn.com/dms/image/D5635AQGgzAhEC3f9Zw/profile-framedphoto-shrink_200_200/0/1706085213108?e=1712908800&v=beta&t=kvbZMrvj1-Ncqnnd6F4vfS1h5SVPyRxq1zy7Ve78Iy8',
+    bannerPic: 'https://media.licdn.com/dms/image/D5616AQHOPhqZf_TRzg/profile-displaybackgroundimage-shrink_350_1400/0/1708433130629?e=1717632000&v=beta&t=SGqFkHigrlH8RjvFJdGxw40-jFiOgj4DvL56S-fEGFI',
     jobRole: 'Software Developer',
     exp: 'Fresher',
     companyName: '',
@@ -206,10 +206,6 @@ export const user = {
             profilePic: 'path/to/david.jpg',
             username: 'David',
             notMsg: 'Hey there! Just wanted to say hello.'
-        },
-        {
-            from: 'Me',
-            notMsg: 'You have received a new message. Check it out!'
         },
     ],
 }
