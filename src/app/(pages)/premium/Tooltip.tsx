@@ -21,9 +21,11 @@ export function Tooltip({ children, text, direction = "bottom" }: TooltipProps) 
                     <div className="relative">{children}</div>
                 </TooltipTrigger>
                 <TooltipContent side={direction}>
-                    <div className="capitalize bg-white flex items-center justify-center px-3 py-2 _border" style={{ borderRadius: '5px' }}>
-                        <p className="text-sm">{text}</p>
-                    </div>
+                    {text &&
+                        <div className="capitalize bg-white flex items-center justify-center px-3 py-2 _border" style={{ borderRadius: '5px' }}>
+                            <p className="text-sm">{text}</p>
+                        </div>
+                    }
                 </TooltipContent>
             </TooltipCon>
         </TooltipProvider>

@@ -31,7 +31,7 @@ const Filters = ({ updateFilters }: FiltersProps) => {
         updateFilters('easyApply', !easyApply);
     };
 
-    const isLoading = true
+    const isLoading = false
 
     return (
         <>

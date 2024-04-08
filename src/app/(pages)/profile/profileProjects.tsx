@@ -6,6 +6,7 @@ import { GoPlus } from "react-icons/go";
 import Model from '@/components/Model/Model';
 import Input from '@/components/Input';
 import { Button } from '@/components/ui/button';
+import Icon from '@/components/Icon';
 
 const ProfileProjects = ({ user }: any) => {
 
@@ -41,9 +42,7 @@ const ProfileProjects = ({ user }: any) => {
             <div className='flex flex-row items-center justify-between py-3'>
                 <h1 className='text-lg font-bold'>Projects</h1>
                 <div className='flex flex-row gap-2 items-center'>
-                    <div className='w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'>
-                        <GoPlus className='text-[25px]' onClick={() => setEditProOpen(true)} />
-                    </div>
+                    <Icon icon={<GoPlus className='text-[25px]' />} onClick={() => setEditProOpen(true)} />
                 </div>
             </div>
             <div className='flex flex-col gap-2'>

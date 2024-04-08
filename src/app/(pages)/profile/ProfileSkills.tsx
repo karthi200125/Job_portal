@@ -24,8 +24,8 @@ const ProfileSkills = ({ user }: any) => {
             <Model headTitle="Edit Skills" body={EditSkills} isOpen={editSkillsOpen} isClose={() => setEditSkillsOpen(false)} />
             <div className='flex flex-row items-center justify-between py-3'>
                 <h1 className='text-lg font-bold'>Skills</h1>
-                <div className='w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'>
-                    <MdEdit className='text-[25px]' onClick={() => setEditSkillsOpen(true)} />
+                <div className='w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'  onClick={() => setEditSkillsOpen(true)} >
+                    <MdEdit className='text-[25px]'/>
                 </div>
             </div>
             <div className='flex flex-wrap flex-row gap-2'>

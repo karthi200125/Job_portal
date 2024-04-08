@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
+import Icon from '../Icon';
 
 interface ModelProps {
   isOpen?: boolean;
@@ -19,9 +20,7 @@ const Model: React.FC<ModelProps> = ({ isOpen, isClose, body, cls, headTitle }) 
           <div className={`${cls} flex flex-col gap-2 w-[400px] shadow-xl bg-white _border p-5`}>
             <div className="relative flex flex-row items-center justify-between _borderb py-2">
               <h1 className="capitalize text-xl font-bold">{headTitle}</h1>
-              <div className="w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center absolute top-0 right-0">
-                <IoCloseSharp className="text-[20px]" onClick={isClose} />
-              </div>
+              <Icon icon={<IoCloseSharp className="text-[20px]" />} onClick={isClose} />
             </div>
             <div className='w-full h-full'>
               {body}

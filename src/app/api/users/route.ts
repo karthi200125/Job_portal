@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import db from '@/utils/DbConnect';
 
+// get all users 
 export async function GET() {
     try {
         const users = await new Promise((resolve, reject) => {
@@ -18,6 +19,8 @@ export async function GET() {
         return NextResponse.json({ error: error.message });
     }
 }
+
+// create projects
 
 
 // export const POST = async (res) => {

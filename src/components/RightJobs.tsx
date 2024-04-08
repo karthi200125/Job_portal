@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { FaSuitcase } from "react-icons/fa";
 import { RiFileListLine } from "react-icons/ri";
 import { LuListChecks } from "react-icons/lu";
@@ -9,6 +10,8 @@ import { IoIosMore } from "react-icons/io";
 import Link from 'next/link';
 import Icon from './Icon';
 import { Tooltip } from '@/app/(pages)/premium/Tooltip';
+import Model from './Model/Model';
+import Apply from './Apply';
 
 interface RightobsProps {
     job?: any
@@ -20,8 +23,15 @@ const RightJobs = ({ job }: RightobsProps) => {
     const applied = false
     const saved = false
 
+    const [ApplyOpen, setApplyOpen] = useState(false);
+
+    const ApplyStatusbody = (
+        <Apply onClose={() => setApplyOpen(false)} />
+    )
+
     return (
         <div className='h-full w-full overflow-y-auto capitalize p-5 relative'>
+            <Model headTitle={`Apply to ${job?.companyName}`} cls='w-[800px]' body={ApplyStatusbody} isOpen={ApplyOpen} isClose={() => setApplyOpen(false)} />
             {!job ?
                 <div>
                     no Job
@@ -68,7 +78,7 @@ const RightJobs = ({ job }: RightobsProps) => {
                     <div className='mt-5 mb-5 flex flex-row gap-5'>
                         {applyUrl ?
                             <Tooltip text='apply that job' direction='top'>
-                                <Button asChild variant='custom_blue' className='px-6'>
+                                <Button asChild variant='custom_blue' className='px-6' onClick={() => setApplyOpen(true)}>
                                     <div >
                                         {applied ? "Applied" : "apply"}
                                     </div>
@@ -76,7 +86,7 @@ const RightJobs = ({ job }: RightobsProps) => {
                             </Tooltip>
                             :
                             <Tooltip text='apply that Job' direction='top'>
-                                <Button variant='custom_blue' className={`px-6 ${applied ? "bg-green-400 text-white cursor-not-allowed " : ""}`}>{applied ? "Applied" : "Easy Apply"}</Button>
+                                <Button variant='custom_blue' onClick={() => setApplyOpen(true)} className={`px-6 ${applied ? "bg-green-400 text-white cursor-not-allowed " : ""}`}>{applied ? "Applied" : "Easy Apply"}</Button>
                             </Tooltip>
                         }
                         <Tooltip text='save that job' direction='top'>

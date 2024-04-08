@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/Icon';
 import Input from '@/components/Input';
 import Model from '@/components/Model/Model';
 import { Button } from '@/components/ui/button';
@@ -13,8 +14,8 @@ const ProfileEducation = ({ user }: any) => {
             <Input cls='w-full' title='Organization Name' />
             <Input cls='w-full' title='Department' />
             <div className='flex flex-row items-center justify-between'>
-                <Input cls='w-1/2' type='date' title='startting date' />
-                <Input cls='w-1/2' type='date' title='Ending date ' />
+                <Input cls='w-[50%]' type='date' title='startting date' />
+                <Input cls='w-[50%]' type='date' title='Ending date ' />
             </div>
             <Button variant='custom_blue' className='w-full'>Submit</Button>
         </div>
@@ -25,9 +26,7 @@ const ProfileEducation = ({ user }: any) => {
             <Model headTitle="Edit Education" body={EditEducationBody} isOpen={editModelOpen} isClose={() => setEditModelOpen(false)} />
             <div className='flex flex-row items-center justify-between py-3'>
                 <h1 className='text-lg font-bold'>Education</h1>
-                <div className='w-[40px] h-[40px] cursor-pointer rounded-full hover:bg-neutral-100 flex items-center justify-center'>
-                    <MdEdit className='text-[25px]' onClick={() => setEditModelOpen(true)} />
-                </div>
+                <Icon icon={<MdEdit className='text-[25px]' />} onClick={() => setEditModelOpen(true)} />
             </div>
 
             <div className='flex flex-col gap-2'>
