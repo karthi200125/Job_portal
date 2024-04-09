@@ -6,18 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const Login = () => {
-
-
-    const handleLogin = async () => {
-        try {
-            const email = "one@gmail.com"
-            const password = "one123"
-            const res = await axios.post('http://localhost:3000/api/login', { email, password })
-            console.log(res.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    
 
     return (
         <div className='container mx-auto flex flex-col gap-2 w-full h-screen'>
