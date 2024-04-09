@@ -8,6 +8,7 @@ export function middleware(request: NextRequest) {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Max-Age': '86400',
     };
+    console.log(request.headers)
     if (request.method === 'OPTIONS') {        
         return new Response(null, { headers });
     } else {
@@ -16,5 +17,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: '/about/:path*',
+    matcher: '/api/:path*',
 };
