@@ -17,7 +17,7 @@ const Register = () => {
     const [role, setRole] = useState('')
     const [isLoading, setisLoading] = useState(false)
 
-    
+
     const HandleChange = (e: any) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
