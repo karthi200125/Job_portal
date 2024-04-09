@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { toast } from 'sonner'
 
 const Register = () => {
 
@@ -17,6 +18,17 @@ const Register = () => {
     const [role, setRole] = useState('')
     const [isLoading, setisLoading] = useState(false)
 
+    const handleRegister = async () => {
+        try {
+            setisLoading(true)
+            const res = await axios.post('http://localhost:3000/api/users', { ...inputs, role })
+            toast(res.data)
+        } catch (err: any) {
+            toast(err)
+        } finally {
+            setisLoading(false)
+        }
+    }
 
     const HandleChange = (e: any) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -46,7 +58,7 @@ const Register = () => {
                     <Input type='email' title='Enter Your Email Address' cls='w-full' onChange={HandleChange} name='email' value={inputs?.email} required />
                     <Input type='password' title='Enter Your Password' cls='w-full' onChange={HandleChange} name='password' value={inputs?.password} required />
                     <p className='text-sm w-full text-center'>By clicking Continue, you agree to LinkedIns User Agreement, Privacy Policy, and <span className='text-blue-300'>Cookie Policy</span>.</p>
-                    <Button className='w-full p-6' variant='custom_blue' >{isLoading ? "laoding..." : "Join Now"}</Button>
+                    <Button className='w-full p-6' variant='custom_blue' onClick={handleRegister}>{isLoading ? "laoding..." : "Join Now"}</Button>
                     <div className='my-3 w-full h-[1px] bg-neutral-200 relative'>
                         <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4'>or</span>
                     </div>

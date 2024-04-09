@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     database: 'jobportal'
 });
 
-db.connect(err => {
+db.connect((err: any) => {
     if (err) {
         console.error("error connecting mysql database", err);
     } else {
