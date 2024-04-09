@@ -60,8 +60,8 @@ export default function Home() {
     const Getusers = async () => {
       try {
         // const res = await axios.get('http://localhost:3000/api/users')
-        setAllUsers(res.data)
-        console.log(res.data)
+        // setAllUsers(res.data)
+        // console.log(res.data)
       } catch (error) {
         console.log(error)
       }
