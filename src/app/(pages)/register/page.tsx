@@ -21,7 +21,7 @@ const Register = () => {
     const handleRegister = async () => {
         try {
             setisLoading(true)
-            const res = await axios.post('http://localhost:3000/api/users', { ...inputs, role })
+            const res = await axios.post('https://job-portal-7m9qmwfss-karthi200125.vercel.app/api/users', { ...inputs, role })
             toast(res.data)
         } catch (err: any) {
             toast(err)
