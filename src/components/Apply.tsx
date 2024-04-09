@@ -54,14 +54,14 @@ const Apply = ({ onClose }: any) => {
                     <div>
                         <h1 className='font-bold pb-2'>Additional question</h1>
                         <div className='flex flex-col mt-3'>
-                            <label htmlFor="" className='text-sm text-neutral-500'>Have you completed the following level of education: Bachelor's Degree?Have you completed the following level of education: Bachelor's Degree? </label>
+                            <label htmlFor="" className='text-sm text-neutral-500'>Have you completed the following level of education: Bachelors Degree?Have you completed the following level of education: Bachelors Degree? </label>
                             <select name="" id="" className='_border p-2'>
                                 <option value="">Yes</option>
                                 <option value="">No</option>
                             </select>
                         </div>
                         <div className='flex flex-col mt-3'>
-                            <label htmlFor="" className='text-sm text-neutral-500'>Are you comfortable commuting to this job's location?Are you comfortable commuting to this job's location? </label>
+                            <label htmlFor="" className='text-sm text-neutral-500'>Are you comfortable commuting to this jobs location?Are you comfortable commuting to this jobs location? </label>
                             <select name="" id="" className='_border p-2'>
                                 <option value="">Yes</option>
                                 <option value="">No</option>
