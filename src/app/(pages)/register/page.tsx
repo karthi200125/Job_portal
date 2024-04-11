@@ -20,12 +20,18 @@ const Register = () => {
 
     const handleRegister = async () => {
         try {
+<<<<<<< HEAD
             if (!role) return toast('Select role');
             if (!inputs.username || !inputs.email || !inputs.password) return toast('All fields are mandatory');
             setIsLoading(true);
             const res = await Axiosrequest.post('/register', { ...inputs, role });
             toast(res?.data?.message);
             router.push('/')
+=======
+            setisLoading(true)
+            const res = await axios.post('https://job-portal-7m9qmwfss-karthi200125.vercel.app/api/users', { ...inputs, role })
+            toast(res.data)
+>>>>>>> bb10ef2fe37540573bba3c0b1d5b752dc9b92b52
         } catch (err: any) {
             toast('Error registering user:');
         } finally {
@@ -75,4 +81,8 @@ const Register = () => {
     );
 };
 
+<<<<<<< HEAD
 export default Register;
+=======
+export default Register
+>>>>>>> bb10ef2fe37540573bba3c0b1d5b752dc9b92b52
