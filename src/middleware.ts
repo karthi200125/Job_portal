@@ -7,8 +7,7 @@ export function middleware(request: NextRequest) {
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Max-Age': '86400',
-    };
-    console.log(request.headers)
+    };    
     if (request.method === 'OPTIONS') {        
         return new Response(null, { headers });
     } else {

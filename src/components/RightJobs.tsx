@@ -29,12 +29,14 @@ const RightJobs = ({ job }: RightobsProps) => {
         <Apply onClose={() => setApplyOpen(false)} />
     )
 
+    console.log(job?.companyEmpCount)
+
     return (
-        <div className='h-full w-full overflow-y-auto capitalize p-5 relative'>
+        <div className='h-[79vh] w-full overflow-y-auto capitalize p-5 relative'>
             <Model headTitle={`Apply to ${job?.companyName}`} cls='w-[800px]' body={ApplyStatusbody} isOpen={ApplyOpen} isClose={() => setApplyOpen(false)} />
             {!job ?
-                <div>
-                    no Job
+                <div className='w-full h-full flex items-start justify-center'>
+                    <h1 className='font-bold text-2xl mt-10'>OOPS!</h1>
                 </div>
                 :
                 <>
@@ -71,7 +73,7 @@ const RightJobs = ({ job }: RightobsProps) => {
 
                     <div className='flex flex-row items-center gap-2 mt-3 text-sm'>
                         <IoPeopleSharp className='mr-2' size={25} />
-                        <span>100 applicants</span>
+                        <span>{job?.companyEmpCount} applicants</span>
                     </div>
 
                     {/* buttons */}

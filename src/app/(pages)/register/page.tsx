@@ -1,38 +1,41 @@
 'use client'
-import Input from '@/components/Input'
-import Logo from '@/components/Logo'
-import { Button } from '@/components/ui/button'
-import axios from 'axios'
-import Link from 'next/link'
-import React, { useState } from 'react'
-import { toast } from 'sonner'
+import Input from '@/components/Input';
+import Logo from '@/components/Logo';
+import { Button } from '@/components/ui/button';
+import { Axiosrequest } from '@/lib/AxiosRequest';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 const Register = () => {
-
     const [inputs, setInputs] = useState({
         username: '',
-        email: "",
+        email: '',
         password: '',
-    })
-
-    const [role, setRole] = useState('')
-    const [isLoading, setisLoading] = useState(false)
+    });
+    const [role, setRole] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter()
 
     const handleRegister = async () => {
         try {
-            setisLoading(true)
-            const res = await axios.post('http://localhost:3000/api/users', { ...inputs, role })
-            toast(res.data)
+            if (!role) return toast('Select role');
+            if (!inputs.username || !inputs.email || !inputs.password) return toast('All fields are mandatory');
+            setIsLoading(true);
+            const res = await Axiosrequest.post('/register', { ...inputs, role });
+            toast(res?.data?.message);
+            router.push('/')
         } catch (err: any) {
-            toast(err)
+            toast('Error registering user:');
         } finally {
-            setisLoading(false)
+            setIsLoading(false);
         }
-    }
+    };
 
-    const HandleChange = (e: any) => {
+    const handleChange = (e: any) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    }
+    };
 
     return (
         <div className='container mx-auto flex flex-col gap-2 w-full h-full items-center justify-center bg-white'>
@@ -42,7 +45,6 @@ const Register = () => {
             </div>
             <div className='flex flex-row gap-5 h-full w-[400px]'>
                 <div className='flex-1 flex items-center justify-center flex-col gap-3'>
-                    {/* <h1 className='text-4xl text-center'>Make the most of your professional life</h1> */}
                     <label className='text-2xl text-center'>Register as Recruiter/JobSeeker</label>
                     <div className='flex flex-row items-center justify-center gap-5 '>
                         <div className='flex flex-row items-center gap-2'>
@@ -54,11 +56,11 @@ const Register = () => {
                             <label htmlFor="">Recruiter</label>
                         </div>
                     </div>
-                    <Input title='Enter Your Username' cls='w-full' onChange={HandleChange} name='username' value={inputs?.username} required />
-                    <Input type='email' title='Enter Your Email Address' cls='w-full' onChange={HandleChange} name='email' value={inputs?.email} required />
-                    <Input type='password' title='Enter Your Password' cls='w-full' onChange={HandleChange} name='password' value={inputs?.password} required />
+                    <Input title='Enter Your Username' cls='w-full' onChange={handleChange} name='username' value={inputs?.username} required />
+                    <Input type='email' title='Enter Your Email Address' cls='w-full' onChange={handleChange} name='email' value={inputs?.email} required />
+                    <Input type='password' title='Enter Your Password' cls='w-full' onChange={handleChange} name='password' value={inputs?.password} required />
                     <p className='text-sm w-full text-center'>By clicking Continue, you agree to LinkedIns User Agreement, Privacy Policy, and <span className='text-blue-300'>Cookie Policy</span>.</p>
-                    <Button className='w-full p-6' variant='custom_blue' onClick={handleRegister}>{isLoading ? "laoding..." : "Join Now"}</Button>
+                    <Button className='w-full p-6' variant='custom_blue' onClick={handleRegister}>{isLoading ? "Loading..." : "Join Now"}</Button>
                     <div className='my-3 w-full h-[1px] bg-neutral-200 relative'>
                         <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4'>or</span>
                     </div>
@@ -70,7 +72,7 @@ const Register = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Register
+export default Register;

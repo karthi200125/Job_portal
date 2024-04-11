@@ -1,10 +1,9 @@
 'use client'
-import { JobData } from '@/Dummydata';
 import Filters from "@/components/Filters";
 import LeftJobs from "@/components/LeftJobs";
 import Navbar from "@/components/Navbar";
 import RightJobs from "@/components/RightJobs";
-import axios from 'axios';
+import { Axiosrequest } from '@/lib/AxiosRequest';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function Home() {
@@ -16,17 +15,18 @@ export default function Home() {
     mode: '',
     easyApply: false
   });
+  const [alljobs, setAlljobs] = useState([])
 
   const updateFilters = (name: string, value: any) => {
     setFilters(prevFilters => ({ ...prevFilters, [name]: value }));
   };
 
   const filteredJobs = useMemo(() => {
-    let result = JobData;
+    let result = alljobs;
 
     // Filter by search query
     if (searchQuery) {
-      result = result.filter(job => job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()));
+      result = result.filter((job: any) => job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()));
     }
 
     // Filter by DatePosted
@@ -36,50 +36,47 @@ export default function Home() {
 
     // Filter by Exp
     if (filters.Exp) {
-      result = result.filter(job => job.jobExp.toLowerCase() === filters.Exp.toLowerCase());
+      result = result.filter((job: any) => job.jobExp.toLowerCase() === filters.Exp.toLowerCase());
     }
 
     // Filter by mode
     if (filters.mode) {
-      result = result.filter(job => job.jobMode.toLowerCase() === filters.mode.toLowerCase());
+      result = result.filter((job: any) => job.jobMode.toLowerCase() === filters.mode.toLowerCase());
     }
 
     // Filter by easyApply
     if (filters.easyApply) {
-      result = result.filter(job => !job.applyLink);
+      result = result.filter((job: any) => !job.applyLink);
     }
 
     return result;
   }, [searchQuery, filters]);
 
-  const job = filteredJobs.find(job => job.id === Number(selectJob));
+  const job = filteredJobs.find((job: any) => job.id === Number(selectJob));
 
-  const [allusers, setAllUsers] = useState([])
 
   useEffect(() => {
-    const Getusers = async () => {
+    const Getjobs = async () => {
       try {
-        // const res = await axios.get('http://localhost:3000/api/users')
-        // setAllUsers(res.data)
-        // console.log(res.data)
+        const res = await Axiosrequest.get('/jobs')
+        setAlljobs(res.data)
       } catch (error) {
         console.log(error)
       }
     }
-    Getusers()
+    Getjobs()
   }, [])
 
-
   return (
-    <>
+    <div className="w-full h-[100vh]" >
       <Navbar onchange={(e: any) => setSearchQuery(e.target.value)} />
-      <section className="container mx-auto w-full h-[100vh] pt-[80px] bg-white flex flex-col gap-2">
+      <section className="container mx-auto w-full h-[calc(100vh - 160px)] pt-[80px] flex flex-col gap-2">
         <Filters updateFilters={updateFilters} />
         <div className="flex flex-row justify-between gap-1">
           <LeftJobs jobs={filteredJobs} onJob={(d: any) => setselectJob(d)} />
           <RightJobs job={job ? job : filteredJobs[0]} />
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import JobCard from './JobCard'
+import nojob from '../../public/nojob.jpg'
 
 interface LeftJobsProps {
     jobs?: any,
@@ -11,12 +12,12 @@ const LeftJobs = ({ jobs, onJob }: LeftJobsProps) => {
     const isLoading = false
 
     return (
-        <div className='h-full w-full'>
+        <div className='h-[79vh] w-full bg-red-400'>
             <div className='p-2 bg-black text-white'>
                 <h1 className='font-bold text-md'>Top Job Picks For You</h1>
                 <span className='text-sm'>{jobs?.length} jobs</span>
             </div>
-            <div className='h-[90vh] overflow-y-scroll flex flex-col'>
+            <div className='h-full overflow-y-scroll flex flex-col'>
                 {isLoading ?
                     <div className='flex flex-col gap-1'>
                         {Array.from({ length: 5 }, (_, index) => (
@@ -40,8 +41,11 @@ const LeftJobs = ({ jobs, onJob }: LeftJobsProps) => {
                             <JobCard key={job?.id} job={job} onJob={onJob} />
                         ))
                         :
-                        <div>
-                            no result
+                        <div className='flex items-start justify-center w-full h-full'>
+                            <div className='flex flex-col gap-2'>
+                                <img src={nojob.src} alt="" className='w-[200px] h-[200px] object-contain' />
+                                <h1>No Mathcing jobs found</h1>
+                            </div>
                         </div>
                 }
             </div>

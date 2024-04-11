@@ -13,11 +13,9 @@ const CreateJob = () => {
     const Experience = ['Intern', "Fresher/Entry Level", 'Associate', 'Mid Senior', 'Senior/Lead', 'Manager']
 
     const [skills, setSkills] = useState<String[]>([])
-
-    console.log(skills)
-
+    
     return (
-        <div className="w-full container mx-auto h-full mt-[70px] p-5 gap-2 flex flex-col">
+        <div className="w-full container mx-auto h-full mt-[60px] p-5 gap-2 flex flex-col bg-white">
             <Navbar />
             <div className="w-full flex -flex-row items-center justify-between">
                 <h1 className="text-3xl font-bold">Create Job</h1>

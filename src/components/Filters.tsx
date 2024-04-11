@@ -36,13 +36,13 @@ const Filters = ({ updateFilters }: FiltersProps) => {
     return (
         <>
             {isLoading ?
-                <div className='flex flex-row gap-3'>
+                <div className='flex flex-row gap-3 shadow-xl'>
                     {Array.from({ length: 5 }, (_, index) => (
                         <div key={index} className='skeleton w-[150px] h-[35px]' style={{ borderRadius: '30px' }}></div>
                     ))}
                 </div>
                 :
-                <div className='flex flex-row gap-2 items-center capitalize py-3'>
+                <div className='flex flex-row gap-2 items-center capitalize py-3 shadow-xl'>
                     <select
                         name=""
                         id=""
