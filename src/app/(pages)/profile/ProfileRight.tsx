@@ -1,6 +1,7 @@
 import Img from '@/components/Img'
 import { Button } from '@/components/ui/button'
 import React from 'react'
+import batch from '../../../../public/batch.png';
 
 const ProfileRight = () => {
     return (
@@ -19,7 +20,10 @@ const ProfileRight = () => {
 
                 <div className="flex flex-col gap-2">
                     <div className="flex flex-row gap-3 border-b-[1px] border-solid border-neutral-200 py-4">
-                        <Img src="" cls='w-[50px] h-[50px] object-cover rounded-full' />
+                        <div className="w-[50px] h-[50px] relative">
+                            <Img src="" cls='w-full h-full object-cover rounded-full' />
+                            <img src={batch.src} alt="" className="w-[20px] h-[20px] object-contain absolute bottom-[-5px] right-0" />
+                        </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-sm font-bold">karthkeyan</span>
                             <p className="text-sm">ract s | redux | html</p>
@@ -36,7 +40,10 @@ const ProfileRight = () => {
 
                 <div className="flex flex-col gap-2">
                     <div className="flex flex-row gap-3 border-b-[1px] border-solid border-neutral-200 py-4">
-                        <Img src="" cls='w-[50px] h-[50px] object-cover rounded-full' />
+                        <div className="w-[50px] h-[50px] relative">
+                            <Img src="" cls='w-full h-full object-cover rounded-full' />
+                            <img src={batch.src} alt="" className="w-[20px] h-[20px] object-contain absolute bottom-[-5px] right-0" />
+                        </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-sm font-bold">karthkeyan</span>
                             <p className="text-sm">ract s | redux | html</p>

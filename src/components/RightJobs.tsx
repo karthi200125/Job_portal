@@ -32,7 +32,7 @@ const RightJobs = ({ job }: RightobsProps) => {
     console.log(job?.companyEmpCount)
 
     return (
-        <div className='h-[79vh] w-full overflow-y-auto capitalize p-5 relative'>
+        <div className='h-full w-full overflow-y-auto capitalize p-5 relative'>
             <Model headTitle={`Apply to ${job?.companyName}`} cls='w-[800px]' body={ApplyStatusbody} isOpen={ApplyOpen} isClose={() => setApplyOpen(false)} />
             {!job ?
                 <div className='w-full h-full flex items-start justify-center'>

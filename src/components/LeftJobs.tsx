@@ -4,21 +4,20 @@ import nojob from '../../public/nojob.jpg'
 
 interface LeftJobsProps {
     jobs?: any,
-    onJob?: any
+    onJob?: any,
+    isloading?: boolean
 }
 
-const LeftJobs = ({ jobs, onJob }: LeftJobsProps) => {
-
-    const isLoading = false
+const LeftJobs = ({ jobs, onJob, isloading }: LeftJobsProps) => {
 
     return (
-        <div className='h-[79vh] w-full bg-red-400'>
+        <div className='h-full w-full'>
             <div className='p-2 bg-black text-white'>
                 <h1 className='font-bold text-md'>Top Job Picks For You</h1>
                 <span className='text-sm'>{jobs?.length} jobs</span>
             </div>
             <div className='h-full overflow-y-scroll flex flex-col'>
-                {isLoading ?
+                {isloading ?
                     <div className='flex flex-col gap-1'>
                         {Array.from({ length: 5 }, (_, index) => (
                             <div

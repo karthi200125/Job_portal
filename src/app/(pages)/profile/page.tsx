@@ -10,16 +10,21 @@ import ProfileSkills from "./ProfileSkills";
 import ProfileViews from "./ProfileViews";
 import ProfileProjects from "./profileProjects";
 import Model from "@/components/Model/Model";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Input from "@/components/Input";
 import { user } from '@/UserDate'
 import Img from "@/components/Img";
 import Icon from "@/components/Icon";
+import batch from '../../../../public/batch.png'
+import { AuthContext } from "@/Context/AuthContext";
+import { useRouter } from "next/router";
 
 const Profile = () => {
 
-    const skills: string[] = ['react', 'redux', 'viotejs'];
+    const router = useRouter();    
+    const { state, dispatch } = useContext(AuthContext)
 
+    console.log(router.query)
     const Followed = true
 
     const [edituserOpen, setEdituserOpen] = useState(false);
@@ -47,6 +52,7 @@ const Profile = () => {
         </div>
     )
 
+    const rec = true
 
     return (
         <div className="container mx-auto h-full flex flex-row gap-5 mt-[90px] w-full">
@@ -63,8 +69,12 @@ const Profile = () => {
                     {/* user details */}
                     <div className="pt-[70px] flex flex-col gap-2 px-5 bg-white">
                         <div className='flex flex-row items-center justify-between py-3'>
-                            <h1 className='text-3xl font-bold'>{user?.username}</h1>
-                            <Icon icon={<MdEdit className='text-[25px]' />} onClick={() => setEdituserOpen(true)} text="edit user info" dir="top"/>
+                            <h1 className='text-4xl font-bold flex items-center gap-2'>
+                                {user?.username}
+                                <img src={batch.src} alt="" className="w-[30px] h-[30px] object-contain" />
+                                <span className={`${rec ? "bg-yellow-300" : "bg-green-300"} px-2 text-[10px] leading-none py-1`} style={{ borderRadius: '5px' }}>{rec ? "Recruiter" : "JobSeeker"}</span>
+                            </h1>
+                            <Icon icon={<MdEdit className='text-[25px]' />} onClick={() => setEdituserOpen(true)} text="edit user info" dir="top" />
                         </div>
                         {/* <h1 className="text-2xl font-bold capitalize">Karthikeya</h1> */}
                         <h2 className="text-sm w-[50%] capitalize">{user?.jobRole}</h2>
