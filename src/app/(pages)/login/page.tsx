@@ -11,6 +11,7 @@ import { toast } from 'sonner';
 
 const Login = () => {
     const { state, dispatch } = useContext(AuthContext);
+    
     const router = useRouter()
     const [inputs, setInputs] = useState({
         email: '',
@@ -26,10 +27,12 @@ const Login = () => {
             setIsLoading(true);
             const res = await Axiosrequest.post('/login', { ...inputs, role });
             dispatch({ type: 'LOGIN', payload: res?.data });
+            console.log(res.data)
             toast('login successful');
-            router.push(`/profile?id=${res?.data?.user?.id}`);
-        } catch (err) {
-            toast('Error logging in');            
+            router.push(`/profile`)
+        } catch (err: any) {
+            toast("");
+            console.log(err?.message)
         } finally {
             setIsLoading(false);
         }

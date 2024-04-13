@@ -8,10 +8,11 @@ interface InputProps {
     onChange?: (value: any) => void;
     type?: string;
     cls?: string;
-    required?: boolean;
+    required?: boolean,
+    isLoading?: boolean;
 }
 
-const Input = ({ title, onChange, type, cls, name, value, required }: InputProps) => {
+const Input = ({ title, onChange, type, cls, name, value, required, isLoading }: InputProps) => {
     const [focused, setFocused] = useState(false);
     const [error, setError] = useState("");
 
@@ -46,6 +47,7 @@ const Input = ({ title, onChange, type, cls, name, value, required }: InputProps
                 value={value}
                 onChange={onChange}
                 required={required}
+                disabled={isLoading}
             />
             {/* {error && <p className="absolute text-red-500 text-sm font-bold leading-none bottom-[-13px] w-full">{"error"}</p>} */}
         </div>

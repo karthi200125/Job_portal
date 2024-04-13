@@ -2,9 +2,9 @@
 const { createContext, useReducer, useEffect } = require("react");
 
 const AuthContext = createContext();
-
+const storedUser = localStorage.getItem('user');
 const INITIAL_STATE = {
-    user: parseFloat(localStorage.getItem('user')) || null,
+    user: JSON.parse(storedUser) || null
 };
 
 const authReducer = (state, action) => {
@@ -28,7 +28,9 @@ const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, INITIAL_STATE);
 
     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(state.user));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('user', JSON.stringify(state.user));
+        }
     }, [state.user]);
 
     return (
