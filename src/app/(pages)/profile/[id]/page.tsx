@@ -11,15 +11,15 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { MdEdit } from "react-icons/md";
-import batch from '../../../../public/batch.png';
+import batch from '../../../../../public/batch.png';
 import ProfileEducation from "./ProfileEducation";
 import ProfileRight from "./ProfileRight";
 import ProfileSkills from "./ProfileSkills";
 import ProfileViews from "./ProfileViews";
 import ProfileProjects from "./profileProjects";
 
-const Profile = () => {
-    const id = 9
+const Profile = ({ params }: any) => {
+    const id = params.id    
 
     const { state, dispatch } = useContext(AuthContext)
     const [profileUser, setprofileUser] = useState<any>({})

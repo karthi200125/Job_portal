@@ -1,7 +1,7 @@
 import Img from '@/components/Img'
 import { Button } from '@/components/ui/button'
 import React from 'react'
-import batch from '../../../../public/batch.png';
+import batch from '../../../../../public/batch.png';
 
 const ProfileRight = () => {
     return (

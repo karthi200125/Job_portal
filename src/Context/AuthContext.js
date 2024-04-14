@@ -2,9 +2,12 @@
 const { createContext, useReducer, useEffect } = require("react");
 
 const AuthContext = createContext();
-const storedUser = localStorage.getItem('user');
+let storedUser = null;
+if (typeof window !== 'undefined') {
+    storedUser = localStorage.getItem('user');
+}
 const INITIAL_STATE = {
-    user: JSON.parse(storedUser) || null
+    user: storedUser ? JSON.parse(storedUser) : null
 };
 
 const authReducer = (state, action) => {

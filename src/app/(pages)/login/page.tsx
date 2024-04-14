@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 
 const Login = () => {
     const { state, dispatch } = useContext(AuthContext);
-    
+
     const router = useRouter()
     const [inputs, setInputs] = useState({
         email: '',
@@ -29,7 +29,7 @@ const Login = () => {
             dispatch({ type: 'LOGIN', payload: res?.data });
             console.log(res.data)
             toast('login successful');
-            router.push(`/profile`)
+            router.push(`/profile/${res?.data?.user?.id}`)
         } catch (err: any) {
             toast("");
             console.log(err?.message)
